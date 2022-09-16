@@ -38,7 +38,7 @@ class HarEntryResponse:
     headersSize: int
     bodySize: int
     headers: List[HarHeaders]
-    _transferSize: int
+    _transferSize: Optional[int]
 
 @dataclass
 class HarEntryTimings:
@@ -54,9 +54,11 @@ class HarEntryTimings:
 @dataclass
 class HarEntry:
     startedDateTime: str
-    _requestId: str
-    _initialPriority: str
-    _priority: str
+    _requestId: Optional[str]
+    _initialPriority: Optional[str]
+    _priority: Optional[str]
+    _resourceType: Optional[str]
+    _securityState: Optional[str]
     pageref: str
     time: float
     request: HarEntryRequest
@@ -79,7 +81,7 @@ class HarPage:
 class HarCreator:
     name: str
     version: str
-    comment: str
+    comment: Optional[str]
 
 @dataclass
 class HarLog:
